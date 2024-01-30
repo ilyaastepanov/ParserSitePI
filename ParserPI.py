@@ -69,9 +69,13 @@ def get_bat():
 
 
 def main():
-	soup = BeautifulSoup(get_html(), 'lxml')
-	print(get_version(html=get_html(), sp=soup))
-	print(get_url(html=get_html(), sp=soup))
+    url = 'https://sfr.gov.ru/employers/general_information/software/software/'
+    version = get_version(get_html(url))
+
+    if version:
+        return get_data(get_html(url))
+    else:
+        return get_bat()
 
 
 if __name__ == '__main__':
